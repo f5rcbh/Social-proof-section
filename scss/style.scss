@@ -2,14 +2,14 @@
 @use './fonts/color' as color;
 @use './fonts/text' as text;
 @use './layout/layouts' as layout;
-
+@use './responsive/breakpoint' as break;
 body{
     @include layout.gridCenter();
-    padding: 3rem;
     height: 100vh;
     background: url(/images/bg-pattern-bottom-desktop.svg)no-repeat , url(/images/bg-pattern-top-desktop.svg)no-repeat;
     .container{
         @include layout.gridCenter();
+        margin: 5rem;
         
         grid-template-rows: repeat(1000px ,2);
         grid-template-areas:
@@ -40,12 +40,13 @@ body{
                 
                 
                 li{
+                    display: flex;
                     position:relative;
                     background-color: color.$lightGray;
                     color: color.$darkMagenta;
                     font-weight: 700;
                     border-radius: 5px;
-                    padding: 1rem 1rem;
+                    padding: 1rem ;
                     margin: 1rem;
                     list-style: none;
                     span{
@@ -71,8 +72,7 @@ body{
             // first card
             .first-col{
                 margin-right: 1rem;
-                border: solid;
-                width: 25vw;
+                width: 22.5rem;
                 background-color: color.$darkMagenta;
                 color:color.$white;
                 border-radius: 10px;
@@ -82,6 +82,7 @@ body{
                     display: inline-flex;
                     .profile_name{
                         padding-inline: 20px;
+                        margin: auto 0 auto 0;
                         p{
                             line-height: 1.2;
                         }
@@ -91,7 +92,7 @@ body{
                     }
                     img{
                         border-radius: 50%;
-                        width: 3vw;
+                        width: 4vw;
                     }
                 }
                 .profile_title{
@@ -107,8 +108,7 @@ body{
      
                 position: relative;
                 top: 1rem ;
-                border: solid;
-                width: 25vw;
+                width: 22.5rem;
                 background-color: color.$darkMagenta;
                 color:color.$white;
                 border-radius: 10px;
@@ -117,6 +117,7 @@ body{
                     width: 100%;
                     display: inline-flex;
                     .profile_name{
+                        margin: auto 0 auto 0;
                         padding-inline: 20px;
                         p{
                             line-height: 1.2;
@@ -127,7 +128,7 @@ body{
                     }
                     img{
                         border-radius: 50%;
-                        width: 3vw;
+                        width: 4vw;
                     }
                 }
                 .profile_title{
@@ -142,8 +143,7 @@ body{
                 margin-left: 1rem;
                 position: relative;
                 top: 2rem ;
-                border: solid;
-                width: 25vw;
+                width: 22.5rem;
                 background-color: color.$darkMagenta;
                 color:color.$white;
                 border-radius: 10px;
@@ -152,6 +152,7 @@ body{
                     width: 100%;
                     display: inline-flex;
                     .profile_name{
+                        margin: auto 0 auto 0;
                         padding-inline: 20px;
                         p{
                             line-height: 1.2;
@@ -162,7 +163,7 @@ body{
                     }
                     img{
                         border-radius: 50%;
-                        width: 3vw;
+                        width: 4vw;
                     }
                 }
                 .profile_title{
@@ -173,5 +174,172 @@ body{
                 }
             }
         }
+    }
+}
+
+
+// tablet Version
+@include break.breakpoint(medium){
+    body{
+        .container{
+            .first-layer{
+                h1{
+                    width: 15rem;
+                    font-size: 2rem;
+                }
+                p{
+                    width: 20rem;
+
+                }
+            }
+            .second-layer{
+                ul{
+                    li{
+                        padding: .5rem;
+                        margin: .5rem;
+                        font-size: 12px;
+                        span{
+                            padding-inline: 10px;
+                        }
+                        img{
+                            padding-inline: 2px;
+                            width: 15px;
+                        }
+                    }
+                }
+            }
+            .third-layer{
+                padding-top: 1rem;
+                .first-col{
+                    margin-right: 1rem;
+                    width: 15rem;
+                    .profile_info{
+                        padding: 1rem 0 0 1rem;
+                        img{
+                            width: 5vw;
+                        }
+                    }
+                    .profile_title{
+                        margin: 1rem;
+                        font-size: 12px;
+                    }
+                }
+                // second card 
+                .second-col{
+                    width: 15rem;
+                    margin: auto;
+                    .profile_info{
+                        padding: 1rem 0 0 1rem;
+                        img{
+                            width: 5vw;
+                        }
+                    }
+                    .profile_title{
+                        margin: 1rem;
+                        font-size: 12px;
+                    }
+                }
+                // third card 
+                .third-col{
+                    width: 15rem;
+                    margin-right: 1rem;
+                    .profile_info{
+                        padding: 1rem 0 0 1rem;
+                        img{
+                            width: 5vw;
+                        }
+                    }
+                    .profile_title{
+                        margin: 1rem;
+                        font-size: 12px         ;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+// Phone Version
+
+@include break.breakpoint(small){
+    body{
+        height: auto;
+        padding: 2rem;
+
+        .container{
+            @include layout.flexCenter();
+            flex-direction: column;
+            margin: auto;
+            
+            
+            .first-layer{
+                margin: auto;
+                text-align: center;
+                h1{
+                    margin: auto;
+                    margin-bottom: 1rem;
+                    width: 15rem;
+                }
+                p{
+                    margin: 1rem auto;
+                    width: 20rem;
+                    line-height: 1;
+                }
+            }
+            .second-layer{
+                ul{
+                    li{
+                        position: static;
+                        text-align: center;
+                        flex-direction: column;
+                        padding:.5rem 2rem;
+                        div{
+                            margin-bottom: .5rem;
+                        }
+                    }
+                }
+            }
+            .third-layer{
+                display: flex;
+                flex-direction: column;
+                // first name and pic
+                .first-col{
+                    width: 250px;
+                    position: static;
+                    margin: auto;
+                    margin-bottom: 1rem;
+                    .profile_info{
+                        img{
+                            width:35px;
+                        }
+                    }
+                }
+                // second name and pic 
+                .second-col{
+                    position: static;
+                    width: 250px;
+                    margin: auto;
+                    .profile_info{
+                        img{
+                            width:35px;
+                        }
+                    }
+                }
+                // third name and pic
+                .third-col{
+                            position: static;
+                    width: 250px;
+                    margin: auto;
+                    margin-top: 1rem;
+                    .profile_info{
+                        img{
+                            width:35px;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
